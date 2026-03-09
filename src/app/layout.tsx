@@ -1,8 +1,6 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
-import { AppHeader } from "@/components/app-shell";
-import { AppFooter } from "@/components/app-shell";
 
 export const metadata: Metadata = {
   title: 'SheetSift',
@@ -22,11 +20,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-screen font-body antialiased flex flex-col bg-background text-foreground">
-        <AppHeader />
-        <div className="flex-1 flex flex-col">
-          {children}
-        </div>
-        <AppFooter />
+        {children}
         <Toaster />
       </body>
     </html>
