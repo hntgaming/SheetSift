@@ -58,6 +58,7 @@ export const getMainSheetData = async (): Promise<ReportRow[]> => {
       'parenttoparentcommission',
       'parenttoparent',
     ]);
+    const commentsIndex = findHeaderIndex(['comments', 'comment']);
 
     if (
       publisherIndex === -1 ||
@@ -86,6 +87,7 @@ export const getMainSheetData = async (): Promise<ReportRow[]> => {
           networkId: row[networkIdIndex] ?? '',
           totalRevenue,
           parentToParentCommission,
+          comments: commentsIndex !== -1 ? (row[commentsIndex] ?? '') : '',
         };
       })
       .filter((row): row is ReportRow => row !== null);

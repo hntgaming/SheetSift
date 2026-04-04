@@ -3,5 +3,6 @@ export type ReportRow = {
   networkId: string;
   totalRevenue: number;
   parentToParentCommission: number;
+  comments: string;
   normalizedId?: string;
 };

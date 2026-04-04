@@ -36,6 +36,7 @@ export function ReportTable({ data, isLoading = false }: ReportTableProps) {
           <TableCell><Skeleton className="h-5 w-1/2" /></TableCell>
           <TableCell><Skeleton className="h-5 w-1/2" /></TableCell>
           <TableCell><Skeleton className="h-5 w-1/2" /></TableCell>
+          <TableCell><Skeleton className="h-5 w-full" /></TableCell>
         </TableRow>
       ));
     }
@@ -51,13 +52,14 @@ export function ReportTable({ data, isLoading = false }: ReportTableProps) {
           <TableCell>{row.networkId}</TableCell>
           <TableCell className="text-right">{formatCurrency(row.totalRevenue)}</TableCell>
           <TableCell className="text-right">{formatCurrency(row.parentToParentCommission)}</TableCell>
+          <TableCell className="max-w-[300px] truncate text-muted-foreground">{row.comments}</TableCell>
         </TableRow>
       ));
     }
 
     return (
       <TableRow>
-        <TableCell colSpan={4} className="h-24 text-center text-muted-foreground">
+        <TableCell colSpan={5} className="h-24 text-center text-muted-foreground">
           No results. Select a partner to generate a report.
         </TableCell>
       </TableRow>
@@ -69,10 +71,11 @@ export function ReportTable({ data, isLoading = false }: ReportTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[250px]">Publisher</TableHead>
+            <TableHead className="w-[200px]">Publisher</TableHead>
             <TableHead>Network ID</TableHead>
             <TableHead className="text-right">Total Revenue</TableHead>
             <TableHead className="text-right">Parent to Parent Commission</TableHead>
+            <TableHead className="w-[300px]">Comments</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -84,6 +87,7 @@ export function ReportTable({ data, isLoading = false }: ReportTableProps) {
               <TableCell colSpan={2} className="font-bold">Totals</TableCell>
               <TableCell className="text-right font-bold">{formatCurrency(totals.totalRevenue)}</TableCell>
               <TableCell className="text-right font-bold">{formatCurrency(totals.parentToParentCommission)}</TableCell>
+              <TableCell />
             </TableRow>
           </TableFooter>
         )}
